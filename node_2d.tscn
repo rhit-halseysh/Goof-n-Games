@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://brbe5kr2ndbbb"]
+
+[ext_resource type="Script" uid="uid://bwe3tqv6ic8v2" path="res://body.gd" id="2_0e48y"]
+[ext_resource type="Texture2D" uid="uid://22nthfsxo40d" path="res://Rogue.png" id="3_epypp"]
+[ext_resource type="Script" uid="uid://bp8pgpv648iuq" path="res://mage.gd" id="3_q6r6c"]
+[ext_resource type="Texture2D" uid="uid://dsarlmfesg0to" path="res://Rogue1.png" id="4_q6r6c"]
+[ext_resource type="Texture2D" uid="uid://m0otarws3t8c" path="res://Rogue2.png" id="5_kdubu"]
+[ext_resource type="Texture2D" uid="uid://ccv8sy32tb3fw" path="res://Dungeon Jail - 22x16 - Base Map - Light.jpg" id="6_rj586"]
+[ext_resource type="Texture2D" uid="uid://dklg52lxvjj8s" path="res://pixil-frame-0 (2).png" id="7_4d7sh"]
+[ext_resource type="Texture2D" uid="uid://dcnsx611t1rqf" path="res://pixil-frame-0 (1).png" id="8_ir8iy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epypp"]
+size = Vector2(185, 639)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d21ai"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_q6r6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kdubu")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rj586"]
+size = Vector2(202, 436)
+
+[node name="Game" type="Node2D" unique_id=1922966710]
+position = Vector2(-55, -224)
+
+[node name="Rogue" type="CharacterBody2D" parent="." unique_id=2011791173]
+visible = false
+position = Vector2(175, -10)
+script = ExtResource("2_0e48y")
+
+[node name="Sprite2D" type="Sprite2D" parent="Rogue" unique_id=1726871049]
+position = Vector2(809, 592)
+texture = ExtResource("3_epypp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rogue" unique_id=1777785997]
+position = Vector2(808.5, 591.5)
+shape = SubResource("RectangleShape2D_epypp")
+
+[node name="Mage" type="Area2D" parent="." unique_id=1604395023]
+visible = false
+script = ExtResource("3_q6r6c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Mage" unique_id=1149169317]
+position = Vector2(293, 485)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_d21ai")
+animation = &"up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mage" unique_id=1706181754]
+position = Vector2(294.5, 485)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_rj586")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1705473682]
+offset_left = 51.0
+offset_top = 216.0
+offset_right = 3131.0
+offset_bottom = 2456.0
+texture = ExtResource("6_rj586")
+
+[node name="PixilFrame0(2)" type="Sprite2D" parent="." unique_id=677257759]
+z_index = 1
+position = Vector2(607, 800)
+scale = Vector2(3.4399996, 3.8300002)
+texture = ExtResource("7_4d7sh")
+
+[node name="PixilFrame0(1)" type="Sprite2D" parent="." unique_id=1626489568]
+z_index = 2
+position = Vector2(377, 516)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_ir8iy")
+
+[connection signal="body_entered" from="Mage" to="Mage" method="_on_body_entered"]
