@@ -3,15 +3,6 @@
 [ext_resource type="Script" uid="uid://drrkamehf6uyg" path="res://Scripts/baselevel.gd" id="1_o70k2"]
 [ext_resource type="TileSet" uid="uid://df6s3mcrk6ij5" path="res://TileMaps/DungeonTiles.tres" id="2_jq6ke"]
 [ext_resource type="FontFile" path="res://font1.tres" id="3_c6rcp"]
-[ext_resource type="Texture2D" uid="uid://bstlej800100i" path="res://Sprites/BronzeKey.png" id="4_jq6ke"]
-[ext_resource type="Script" uid="uid://cf3n5mu6tayi8" path="res://Scripts/floating_key.gd" id="4_sxshs"]
-[ext_resource type="Texture2D" uid="uid://nxxotjqhc3jj" path="res://Sprites/Door.png" id="5_c6rcp"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6rcp"]
-size = Vector2(10, 28)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxshs"]
-size = Vector2(29, 58)
 
 [node name="BaseLevel" type="Control" unique_id=108726773]
 layout_mode = 3
@@ -46,44 +37,3 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_c6rcp")
 text = "Scene Name
 "
-
-[node name="Button" type="Button" parent="." unique_id=142567619]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.85700005
-anchor_top = 0.093
-anchor_right = 0.85700005
-anchor_bottom = 0.093
-offset_left = 1072.0
-offset_top = 18.0
-offset_right = 1264.0
-offset_bottom = 139.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_c6rcp")
-text = "Goto next scene"
-
-[node name="FloatingKey" type="Area2D" parent="." unique_id=1391077919]
-script = ExtResource("4_sxshs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FloatingKey" unique_id=1724967352]
-position = Vector2(82, 115)
-shape = SubResource("RectangleShape2D_c6rcp")
-
-[node name="Sprite2D" type="Sprite2D" parent="FloatingKey" unique_id=1126688309]
-position = Vector2(82, 115)
-texture = ExtResource("4_jq6ke")
-
-[node name="Door" type="Area2D" parent="." unique_id=1799249696]
-position = Vector2(194, 117)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door" unique_id=1976930746]
-position = Vector2(-11.5, 46)
-shape = SubResource("RectangleShape2D_sxshs")
-
-[node name="Sprite2D" type="Sprite2D" parent="Door" unique_id=434106678]
-position = Vector2(-12.000004, 46)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_c6rcp")
-
-[connection signal="pressed" from="Button" to="." method="_level_complete"]

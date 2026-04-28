@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://scm5nco3xq4y"]
+
+[ext_resource type="PackedScene" uid="uid://bkjqf3vdma563" path="res://Levels/BaseLevel.tscn" id="1_rhq3p"]
+[ext_resource type="PackedScene" uid="uid://cj5ki0anob085" path="res://Components/door.tscn" id="2_jon3f"]
+[ext_resource type="PackedScene" uid="uid://bii0q7y1bvpmw" path="res://Components/floating_key.tscn" id="3_8eiv4"]
+
+[node name="BaseLevel" unique_id=108726773 instance=ExtResource("1_rhq3p")]
+
+[node name="Title" parent="." index="2" unique_id=742869931]
+text = "Level 3"
+
+[node name="Door" parent="." index="3" unique_id=860605189 instance=ExtResource("2_jon3f")]
+position = Vector2(1248, 44)
+rotation = 3.1415927
+
+[node name="FloatingKey" parent="." index="4" unique_id=46343163 instance=ExtResource("3_8eiv4")]
+position = Vector2(557, 599)

@@ -1,5 +1,5 @@
-# PlayerBase.gd
-class_name PlayerBase
+# BasePlayer.gd
+class_name BasePlayer
 extends CharacterBody2D
 
 func _ready():
@@ -7,3 +7,6 @@ func _ready():
 
 func get_facing() -> int:
 	return 0  # overridden by each player
+	
+func get_key_holder():
+	pass # overridden

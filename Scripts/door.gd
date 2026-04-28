@@ -8,7 +8,7 @@ var _unlocked := false
 var _opening := false
 
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
+	pass
 
 func _process(delta: float) -> void:
 	if _opening:
@@ -26,15 +26,14 @@ func unlock() -> void:
 func _on_body_entered(body: Node) -> void:
 	if _unlocked or not body.is_in_group("player"):
 		return
-
 	# Does this player carry the key?
-	var key := _find_key_on(body)
-	if key:
-		key.start_unlock(self)
+	_key = _find_key_on(body)
+	if _key:
+		_key.start_unlock(self)
 
 func _find_key_on(player: Node) -> Node:
 	# The key tracks the player reference — check all FloatingKey nodes in the scene
-	for key in get_tree().get_nodes_in_group("floating_key"):
-		if key.player == player and key.state == FloatingKey.State.FOLLOWING:
-			return key
+	for _key in get_tree().get_nodes_in_group("FloatingKey"):
+		if _key.player == player and _key.state == FloatingKey.State.FOLLOWING:
+			return _key
 	return null

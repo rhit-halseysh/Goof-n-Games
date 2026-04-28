@@ -2,13 +2,16 @@ class_name FloatingKey
 
 extends Area2D
 
+signal key_collected
+
 enum State { FLOATING, FOLLOWING, UNLOCKING }
 
 @export var float_amplitude := 8.0       # pixels up/down while idle
 @export var float_speed := 2.0           # idle bob frequency
-@export var follow_distance := 60.0      # how far behind the player it trails
+@export var follow_distance := 20.0      # how far behind the player it trails
 @export var follow_speed := 5.0          # lerp speed when following
 @export var unlock_speed := 300.0        # px/s when flying to door
+@export var float_offset := 0.0        # px/s when flying to door
 
 var state := State.FLOATING
 var player: Node2D = null
@@ -17,8 +20,7 @@ var origin: Vector2                      # spawn position for idle bob
 
 func _ready() -> void:
 	origin = global_position
-	# Listen for a player walking into the key's pickup radius
-	body_entered.connect(_on_body_entered)
+	add_to_group("FloatingKey")
 
 func _process(delta: float) -> void:
 	match state:
@@ -35,16 +37,19 @@ func _do_float(_delta: float) -> void:
 	rotation = sin(Time.get_ticks_msec() / 1000.0 * float_speed * 0.5) * 0.15   # gentle tilt
 
 # ── Trail the player ──────────────────────────────────────────────────────────
+
 func _do_follow(delta: float) -> void:
 	if not is_instance_valid(player):
 		state = State.FLOATING
 		return
+	float_offset += delta * float_speed
+	var float_effect = sin(float_offset) * float_amplitude
 
-	var target := player.global_position + Vector2(-player.scale.x * follow_distance, 0)
-	target.y += sin(Time.get_ticks_msec() / 1000.0 * float_speed) * float_amplitude
-
-	global_position = global_position.lerp(target, follow_speed * delta)
-	rotation = sin(Time.get_ticks_msec() / 1000.0 * float_speed * 0.5) * 0.15
+	var holder = player.get_key_holder()
+	if is_instance_valid(holder):
+		var target = holder.global_position
+		global_position = lerp(global_position, target, delta * follow_speed)
+		global_position.y += float_effect * delta
 
 # ── Fly to the door ───────────────────────────────────────────────────────────
 func _do_unlock(delta: float) -> void:

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://duxtou1yj4bvc"]
+
+[ext_resource type="Script" uid="uid://bp8pgpv648iuq" path="res://Scripts/mage.gd" id="1_f3cb8"]
+[ext_resource type="Texture2D" uid="uid://dklg52lxvjj8s" path="res://Sprites/pixil-frame-0 (2).png" id="2_nh4cc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajely"]
+size = Vector2(116, 198)
+
+[node name="Mage" type="CharacterBody2D" unique_id=1205749863]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_f3cb8")
+
+[node name="MageSprite" type="Sprite2D" parent="." unique_id=1334208223]
+z_index = 2
+scale = Vector2(5, 5)
+texture = ExtResource("2_nh4cc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1448816552]
+position = Vector2(0, -60)
+shape = SubResource("RectangleShape2D_ajely")
+
+[node name="MageKeyHolder" type="Marker2D" parent="." unique_id=998111179]
+position = Vector2(-132, -136)

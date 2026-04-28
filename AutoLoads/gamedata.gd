@@ -1,6 +1,7 @@
 extends Node
 
-var player_health = 100
+var mage_health = 100
+var warrior_health = 100
 var level_number: int = 0
 var next_level: String = ""
 

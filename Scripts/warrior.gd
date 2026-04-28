@@ -1,5 +1,5 @@
 # Warrior.gd
-extends PlayerBase
+extends BasePlayer
 
 @export var run_speed = 350
 @export var jump_speed = -1000
@@ -23,6 +23,9 @@ func get_input():
 
 func get_facing() -> int:
 	return 1 if $WarriorSprite.scale.x < 0 else -1
+	
+func get_key_holder() -> Node:
+	return $WarriorKeyHolder
 
 func _physics_process(delta):
 	velocity.y += gravity * delta

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cdl6qs1ba71j1"]
+
+[ext_resource type="Script" uid="uid://bwe3tqv6ic8v2" path="res://Scripts/warrior.gd" id="1_pkbmn"]
+[ext_resource type="Texture2D" uid="uid://dcnsx611t1rqf" path="res://Sprites/pixil-frame-0 (1).png" id="2_373gj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpfp8"]
+size = Vector2(416, 704)
+
+[node name="Warrior" type="CharacterBody2D" unique_id=1573325290]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_pkbmn")
+
+[node name="WarriorSprite" type="Sprite2D" parent="." unique_id=534415511]
+z_index = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_373gj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=492264731]
+position = Vector2(0, 4)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_qpfp8")
+
+[node name="WarriorKeyHolder" type="Marker2D" parent="." unique_id=1318746408]
+position = Vector2(-200, -156)
