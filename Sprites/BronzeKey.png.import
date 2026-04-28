@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m0otarws3t8c"
-path="res://.godot/imported/Rogue2.png-8a762cfd33d88b768c0a0cdf042ece3d.ctex"
+uid="uid://bstlej800100i"
+path="res://.godot/imported/BronzeKey.png-8a3a16bbdc744fbfc4eb3bcd99e63313.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Rogue2.png"
-dest_files=["res://.godot/imported/Rogue2.png-8a762cfd33d88b768c0a0cdf042ece3d.ctex"]
+source_file="res://Sprites/BronzeKey.png"
+dest_files=["res://.godot/imported/BronzeKey.png-8a3a16bbdc744fbfc4eb3bcd99e63313.ctex"]
 
 [params]
 

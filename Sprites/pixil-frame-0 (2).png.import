@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://22nthfsxo40d"
-path="res://.godot/imported/Rogue.png-38c96ac61e035c8cc8a57d0d2d810feb.ctex"
+uid="uid://dklg52lxvjj8s"
+path="res://.godot/imported/pixil-frame-0 (2).png-9bb0bebbe4b8d7a5f1b384f88ab72233.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Rogue.png"
-dest_files=["res://.godot/imported/Rogue.png-38c96ac61e035c8cc8a57d0d2d810feb.ctex"]
+source_file="res://Sprites/pixil-frame-0 (2).png"
+dest_files=["res://.godot/imported/pixil-frame-0 (2).png-9bb0bebbe4b8d7a5f1b384f88ab72233.ctex"]
 
 [params]
 

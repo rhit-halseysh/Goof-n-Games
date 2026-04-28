@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcnsx611t1rqf"
-path="res://.godot/imported/pixil-frame-0 (1).png-160dd9969d7e45d14d604c370b40e019.ctex"
+uid="uid://nxxotjqhc3jj"
+path="res://.godot/imported/Door.png-c55366d45e28797e373179b2526bc38b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pixil-frame-0 (1).png"
-dest_files=["res://.godot/imported/pixil-frame-0 (1).png-160dd9969d7e45d14d604c370b40e019.ctex"]
+source_file="res://Sprites/Door.png"
+dest_files=["res://.godot/imported/Door.png-c55366d45e28797e373179b2526bc38b.ctex"]
 
 [params]
 

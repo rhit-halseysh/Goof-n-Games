@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dit6p3ehil50y"]
+
+[ext_resource type="Script" uid="uid://drrkamehf6uyg" path="res://Scripts/baselevel.gd" id="1_yw2i3"]
+
+[sub_resource type="Theme" id="Theme_04b30"]
+
+[node name="MainMenu" type="Control" unique_id=2082197674]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yw2i3")
+
+[node name="Title" type="Label" parent="." unique_id=43292258]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 90
+text = "Untitled Dungeon Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=89410358]
+layout_mode = 0
+offset_top = 320.0
+offset_right = 1280.0
+offset_bottom = 720.0
+theme = SubResource("Theme_04b30")
+
+[node name="MainButtons" type="VBoxContainer" parent="CenterContainer" unique_id=891888305]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Play" type="Button" parent="CenterContainer/MainButtons" unique_id=1246206756]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "PLAY"
+
+[node name="Credits" type="Button" parent="CenterContainer/MainButtons" unique_id=1894764597]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "CREDITS"
+
+[node name="Exit" type="Button" parent="CenterContainer/MainButtons" unique_id=63166602]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "EXIT"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1013699245]
+z_index = -4096
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -7.0
+offset_right = 15.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.09411765, 0.078431375, 0.14509805, 1)
+
+[connection signal="pressed" from="CenterContainer/MainButtons/Play" to="." method="_level_complete"]
+[connection signal="pressed" from="CenterContainer/MainButtons/Exit" to="." method="_exit"]

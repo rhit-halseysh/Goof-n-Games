@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://fy02hi10dydx"]
+
+[ext_resource type="PackedScene" uid="uid://bkjqf3vdma563" path="res://Levels/BaseLevel.tscn" id="1_nutv8"]
+[ext_resource type="Script" uid="uid://bwe3tqv6ic8v2" path="res://Scripts/warrior.gd" id="3_xcayt"]
+[ext_resource type="Texture2D" uid="uid://dcnsx611t1rqf" path="res://Sprites/pixil-frame-0 (1).png" id="4_5g41i"]
+[ext_resource type="Script" uid="uid://bp8pgpv648iuq" path="res://Scripts/mage.gd" id="5_7fl83"]
+[ext_resource type="Texture2D" uid="uid://dklg52lxvjj8s" path="res://Sprites/pixil-frame-0 (2).png" id="6_p5226"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpfp8"]
+size = Vector2(416, 704)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajely"]
+size = Vector2(116, 198)
+
+[node name="BaseLevel" unique_id=108726773 instance=ExtResource("1_nutv8")]
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="Title" parent="." index="2" unique_id=742869931]
+text = "Level 0"
+
+[node name="Warrior" type="CharacterBody2D" parent="." index="4" unique_id=775010970]
+position = Vector2(110, 642)
+scale = Vector2(0.25, 0.25)
+script = ExtResource("3_xcayt")
+
+[node name="WarriorSprite" type="Sprite2D" parent="Warrior" index="0" unique_id=1466121101]
+z_index = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_5g41i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Warrior" index="1" unique_id=5816382]
+position = Vector2(0, 4)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_qpfp8")
+
+[node name="Mage" type="CharacterBody2D" parent="." index="5" unique_id=1904350842]
+position = Vector2(57, 431)
+scale = Vector2(0.25, 0.25)
+script = ExtResource("5_7fl83")
+
+[node name="MageSprite" type="Sprite2D" parent="Mage" index="0" unique_id=271682622]
+z_index = 2
+position = Vector2(212, 123.99998)
+scale = Vector2(5, 5)
+texture = ExtResource("6_p5226")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mage" index="1" unique_id=457359341]
+position = Vector2(214, 63)
+shape = SubResource("RectangleShape2D_ajely")
+
+[node name="FloatingKey" parent="." index="6" unique_id=1391077919]
+position = Vector2(603, 552)
+
+[node name="Door" parent="." index="7" unique_id=1799249696]
+position = Vector2(1260, 628)

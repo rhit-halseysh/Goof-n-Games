@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsarlmfesg0to"
-path="res://.godot/imported/Rogue1.png-e116ec64690ae598706ac591f39e9738.ctex"
+uid="uid://b8vr555f50tio"
+path="res://.godot/imported/Dungeon Tile Set.png-20843da24f53be4515bac3a0534b1d2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Rogue1.png"
-dest_files=["res://.godot/imported/Rogue1.png-e116ec64690ae598706ac591f39e9738.ctex"]
+source_file="res://Sprites/Dungeon Tile Set.png"
+dest_files=["res://.godot/imported/Dungeon Tile Set.png-20843da24f53be4515bac3a0534b1d2c.ctex"]
 
 [params]
 
