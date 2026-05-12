@@ -3,12 +3,25 @@
 [ext_resource type="Script" uid="uid://bp8pgpv648iuq" path="res://Scripts/mage.gd" id="1_f3cb8"]
 [ext_resource type="Texture2D" uid="uid://dklg52lxvjj8s" path="res://Sprites/pixil-frame-0 (2).png" id="2_nh4cc"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3cb8"]
+size = Vector2(240, 400)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajely"]
 size = Vector2(116, 198)
 
 [node name="Mage" type="CharacterBody2D" unique_id=1205749863]
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_f3cb8")
+
+[node name="LadderDetector" type="Area2D" parent="." unique_id=1628724667]
+position = Vector2(0, 4)
+scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderDetector" unique_id=308608162]
+position = Vector2(0, -128)
+shape = SubResource("RectangleShape2D_f3cb8")
 
 [node name="MageSprite" type="Sprite2D" parent="." unique_id=1334208223]
 z_index = 2
@@ -21,3 +34,6 @@ shape = SubResource("RectangleShape2D_ajely")
 
 [node name="MageKeyHolder" type="Marker2D" parent="." unique_id=998111179]
 position = Vector2(-132, -136)
+
+[connection signal="body_entered" from="LadderDetector" to="." method="_on_ladder_detector_body_entered"]
+[connection signal="body_exited" from="LadderDetector" to="." method="_on_ladder_detector_body_exited"]

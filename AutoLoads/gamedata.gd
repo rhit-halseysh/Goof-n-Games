@@ -5,6 +5,8 @@ var warrior_health = 100
 var level_number: int = 0
 var next_level: String = ""
 
+var on_ladder: bool
+var climbing: bool
 
 func save_player_data():
 	pass

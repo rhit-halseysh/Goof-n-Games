@@ -68,7 +68,7 @@ func _do_unlock(delta: float) -> void:
 
 # ── Signals ───────────────────────────────────────────────────────────────────
 func _on_body_entered(body: Node) -> void:
-	if state == State.FLOATING and body.is_in_group("player"):
+	if (state == State.FLOATING or state == State.FOLLOWING) and body.is_in_group("player"):
 		player = body
 		state  = State.FOLLOWING
 

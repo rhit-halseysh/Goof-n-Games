@@ -1,36 +1,52 @@
 # Warrior.gd
 extends BasePlayer
 
-@export var run_speed = 350
-@export var jump_speed = -1000
-@export var gravity = 2500
-@export var health = 0
+func _ready():
+	add_to_group("player")
+	add_to_group("warrior")
 
-func get_input():
-	velocity.x = 0
-	var right = Input.is_action_pressed('Right')
-	var left = Input.is_action_pressed('Left')
-	var jump = Input.is_action_just_pressed('Up')
+func get_input(delta: float):
+	var grounded = is_on_floor()
+	var horizontal = Input.get_axis('Left', 'Right')
 	
-	if is_on_floor() and jump:
+	if on_ladder:
+		var vertical = Input.get_axis('Up', 'Down')
+		if vertical:
+			velocity.y = vertical * CLIMB_SPEED
+			climbing = not grounded
+		else:
+			velocity.y = move_toward(velocity.y, 0, CLIMB_SPEED)
+			if grounded: climbing = false
+		#if climbing:
+			#if vertical: animation
+			#else: stop animation
+	elif not grounded:
+		velocity += get_gravity() * delta
+		
+	if Input.is_action_just_pressed('Up') and not climbing and grounded:
 		velocity.y = jump_speed
-	if right:
-		velocity.x += run_speed
-		$WarriorSprite.scale.x = -abs($WarriorSprite.scale.x)   # Face right
-	if left:
-		velocity.x -= run_speed
-		$WarriorSprite.scale.x = abs($WarriorSprite.scale.x)  # Face left (flipped)
+		
+	if horizontal:
+		$WarriorSprite.flip_h = velocity.x > 0
+		velocity.x = horizontal * run_speed
+		if on_ladder: climbing = not grounded
+		else: climbing = false
+	else: 
+		velocity.x = move_toward(velocity.x, 0, run_speed)
+		#if not climbing: anim.play('idle')
 
 func get_facing() -> int:
 	return 1 if $WarriorSprite.scale.x < 0 else -1
 	
 func get_key_holder() -> Node:
 	return $WarriorKeyHolder
-
-func _physics_process(delta):
-	velocity.y += gravity * delta
-	get_input()
-	move_and_slide()
 	
-#func _on_level_exit():
-	#GameData.player_health = health
+func _physics_process(delta):
+	get_input(delta)
+	move_and_slide()
+
+func _on_ladder_detector_body_entered(body: Node2D) -> void:
+	on_ladder = true
+
+func _on_ladder_detector_body_exited(body: Node2D) -> void:
+	on_ladder = false

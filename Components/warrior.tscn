@@ -3,12 +3,24 @@
 [ext_resource type="Script" uid="uid://bwe3tqv6ic8v2" path="res://Scripts/warrior.gd" id="1_pkbmn"]
 [ext_resource type="Texture2D" uid="uid://dcnsx611t1rqf" path="res://Sprites/pixil-frame-0 (1).png" id="2_373gj"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8g7wm"]
+size = Vector2(416, 704)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpfp8"]
 size = Vector2(416, 704)
 
 [node name="Warrior" type="CharacterBody2D" unique_id=1573325290]
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_pkbmn")
+
+[node name="LadderDetector" type="Area2D" parent="." unique_id=882303886]
+position = Vector2(0, 4)
+scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderDetector" unique_id=40395663]
+shape = SubResource("RectangleShape2D_8g7wm")
 
 [node name="WarriorSprite" type="Sprite2D" parent="." unique_id=534415511]
 z_index = 2
@@ -22,3 +34,6 @@ shape = SubResource("RectangleShape2D_qpfp8")
 
 [node name="WarriorKeyHolder" type="Marker2D" parent="." unique_id=1318746408]
 position = Vector2(-200, -156)
+
+[connection signal="body_entered" from="LadderDetector" to="." method="_on_ladder_detector_body_entered"]
+[connection signal="body_exited" from="LadderDetector" to="." method="_on_ladder_detector_body_exited"]
